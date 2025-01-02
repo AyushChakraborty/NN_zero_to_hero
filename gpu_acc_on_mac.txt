@@ -1,0 +1,18 @@
+to set up the device from CPU to GPU, MPS or metal performance shaders is used, which is like
+an equilvalent to CUDA but for mac. It essentially is an API to allow us to use the GPU
+within Apple silicon. To set it up for torch
+
+device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+
+also unrelated, but in practice, to develop real models, use standard .py files, not 
+jupyter nbs, use them only for prototyping
+
+to compile a model with the intended device now
+
+model = ....
+model = torch.compile(model.to(device), backend = "aot_eager")
+
+backend param here is not always needed, the backend param specifies the compilation
+stratergy that torch uses to optimises the models execution on hardware, gpu in this case.
+aot stands for ahead of time, and it simplifies the computation graph of the model
+before passing it to the gpu
