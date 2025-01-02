@@ -1,2 +1,2 @@
 # NN_zero_to_hero
-Codes from zero to hero miniseries in yt by Andrej Karapathy
+Codes from zero to hero miniseries on yt by Andrej Karpathy
